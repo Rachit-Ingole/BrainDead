@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  braindead-solution:
+    build: .
+    ports:
+      - "8501:8501"
+    volumes:
+      # Mount data directory for persistent storage
+      - ./data:/app/data
+      # Mount checkpoints for model weights
+      - ./checkpoints:/app/checkpoints
+      # Mount logs if needed
+      - ./logs:/app/logs
+    environment:
+      - PYTHONPATH=/app
+      - STREAMLIT_SERVER_HEADLESS=true
+      - STREAMLIT_SERVER_PORT=8501
+      - STREAMLIT_SERVER_ADDRESS=0.0.0.0
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8501/healthz"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    deploy:
+      resources:
+        limits:
+          memory: 4G
+        reservations:
+          memory: 2G
