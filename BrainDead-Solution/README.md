@@ -24,15 +24,6 @@ The system consists of three main modules that simulate the cognitive workflow o
 - **Output**: Structured clinical reports (findings + impression)
 - **Architecture**: Transformer decoder with triangular attention mechanisms
 
-## 📊 Performance Benchmarks
-
-| Metric | Target | Current Best | Status |
-|--------|--------|--------------|--------|
-| CheXpert F1 | >0.5 | 0.326 | ⚠️ Below target |
-| RadGraph F1 | >0.5 | 0.401 | ⚠️ Below target |
-| CIDEr | >0.4 | 0.004 | ⚠️ Below target |
-| BLEU-4 | >0.3 | 0.0403 | ⚠️ Below target |
-
 *Note: Models trained for limited epochs (6) on CPU. Performance expected to improve with GPU training and more epochs.*
 
 ## 🚀 Quick Start
@@ -239,17 +230,6 @@ docker-compose up -d --scale braindead-solution=3
 docker-compose logs -f
 ```
 
-### Cloud Deployment
-The containerized setup makes it easy to deploy to:
-- **AWS ECS/Fargate**
-- **Google Cloud Run**
-- **Azure Container Instances**
-- **Kubernetes**
-- **Heroku** (with heroku.yml)
-
-### API Extension
-For programmatic access, the system can be extended with FastAPI endpoints for REST API deployment.
-
 ## 🏥 CheXpert Disease Labels
 
 The system classifies 14 chest X-ray findings:
@@ -269,22 +249,6 @@ The system classifies 14 chest X-ray findings:
 13. **Pneumothorax** - Air in pleural space
 14. **Support Devices** - Medical devices (tubes, lines)
 
-## 📄 Citation
-
-If you use this code in your research, please cite:
-
-```bibtex
-@article{braindead2024,
-  title={BrainDead-Solution: A Cognitive Radiology System for Chest X-ray Analysis},
-  author={Your Name},
-  journal={arXiv preprint},
-  year={2024}
-}
-```
-
-## 📋 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## 🙏 Acknowledgments
 
